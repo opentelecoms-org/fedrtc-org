@@ -1,0 +1,8 @@
+<?php
+
+/* Rename this file as config.php and insert your settings */
+
+$auth_secret = "change this to something long and secret";
+$pg_creds = "host=localhost dbname=repro user=repro password=change.this";
+
+?>

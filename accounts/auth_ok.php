@@ -41,29 +41,22 @@ global $pape_policy_uris;
   </style>
   <body>
     <h1>Fedora RTC account creation</h1>
-    <p>Enter your Fedora FAS username.  You will be asked to authenticate
-      against the Fedora OpenID server and then you will be able to set
-      an RTC password for your account.</p>
 
     <?php if (isset($msg)) { print "<div class=\"alert\">$msg</div>"; } ?>
     <?php if (isset($error)) { print "<div class=\"error\">$error</div>"; } ?>
     <?php if (isset($success)) { print "<div class=\"success\">$success</div>"; } ?>
 
-    <div id="verify-form">
-      <form method="get" action="try_auth.php">
-        FAS&nbsp;Username:
-        <input type="hidden" name="action" value="verify" />
-        <input type="text" name="fas_identifier" value="" />
+    <p>Now you can set your RTC password for <b><?php print $rtc_id; ?></b>.</p>
+    <div id="create-form">
+      <form method="post" action="set_password.php">
+        <input type="hidden" name="rtc_id" value="<?php print $rtc_id; ?>"/>
+        <input type="hidden" name="rtc_token" value="<?php print $rtc_token; ?>"/>
+        Set&nbsp;RTC&nbsp;Password:
+        <input type="password" name="rtc_password" value="" /><br/>
+        Repeat&nbsp;RTC&nbsp;Password:
+        <input type="password" name="rtc_password2" value="" />
 
-        <p><!--Optionally, request these PAPE policies:--></p>
-        <p>
-        <?php /* foreach ($pape_policy_uris as $i => $uri) {
-          print "<input type=\"checkbox\" name=\"policies[]\" value=\"$uri\" />";
-          print "$uri<br/>";
-        } */ ?>
-        </p>
-
-        <input type="submit" value="Verify" />
+        <input type="submit" value="Set RTC Password" />
       </form>
     </div>
   </body>

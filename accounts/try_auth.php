@@ -6,13 +6,13 @@ session_start();
 function getOpenIDURL() {
     // Render a default page if we got a submission without an openid
     // value.
-    if (empty($_GET['openid_identifier'])) {
-        $error = "Expected an OpenID URL.";
+    if (empty($_GET['fas_identifier'])) {
+        $error = "Expected a FAS username.";
         include 'index.php';
         exit(0);
     }
 
-    return $_GET['openid_identifier'];
+    return "http://".$_GET['fas_identifier'].".id.fedoraproject.org";
 }
 
 function run() {

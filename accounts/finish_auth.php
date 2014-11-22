@@ -50,6 +50,9 @@ function run() {
         if (@$sreg['nickname']) {
             $success .= "  Your nickname is '".escape($sreg['nickname']).
                 "'.";
+            $rtc_id = escape($sreg['nickname']).'@fedrtc.org';
+            include("config.php");
+            $rtc_token = hash_hmac("sha256", $rtc_id, $auth_secret);
         }
 
         if (@$sreg['fullname']) {
@@ -90,7 +93,10 @@ function run() {
 	}
     }
 
-    include 'index.php';
+    if (isset($success))
+        include 'auth_ok.php';
+    else
+        include 'index.php';
 }
 
 run();
