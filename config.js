@@ -58,6 +58,10 @@ JSCommSettings = {
     clear_dialbox: false,          // Whether to clear dialbox after call/attempted call
   },
 
+  chat : {
+    enable: false                 // Whether to show chat functions
+  },
+
   session : {
     show_dtmf_pad : true,        // Whether to show a DTMF dialpad during calls
     dtmf_duration: 160,
